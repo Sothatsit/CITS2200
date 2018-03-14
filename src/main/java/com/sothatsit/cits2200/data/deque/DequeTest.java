@@ -1,4 +1,4 @@
-package com.sothatsit.cits2200.data;
+package com.sothatsit.cits2200.data.deque;
 
 import static com.sothatsit.cits2200.test.Checks.*;
 
@@ -89,7 +89,7 @@ public class DequeTest {
             }
         }
 
-        System.out.println("com.sothatsit.cits2200.data.DequeCyclic passed");
+        System.out.println("com.sothatsit.cits2200.data.deque.DequeCyclic passed");
     }
 
     public static void testDequeLinked() {

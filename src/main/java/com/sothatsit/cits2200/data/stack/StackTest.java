@@ -1,4 +1,4 @@
-package com.sothatsit.cits2200.data;
+package com.sothatsit.cits2200.data.stack;
 
 import CITS2200.Overflow;
 import CITS2200.Underflow;

@@ -1,7 +1,8 @@
-package com.sothatsit.cits2200.data;
+package com.sothatsit.cits2200.data.deque;
 
 import CITS2200.Deque;
 import CITS2200.Underflow;
+import com.sothatsit.cits2200.data.NodeDoublyLinked;
 
 public class DequeLinked implements Deque {
 
@@ -159,29 +160,10 @@ public class DequeLinked implements Deque {
     }
 
     /**
-     * @return a stringified representation of this deque as an array
+     * @return a string representation of this deque as an array
      */
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-
-        builder.append('[');
-
-        boolean first = true;
-        NodeDoublyLinked current = left;
-        while(current != null) {
-            if(!first) {
-                builder.append(", ");
-            } else {
-                first = false;
-            }
-
-            builder.append(current.getValue());
-            current = current.getRight();
-        }
-
-        builder.append(']');
-
-        return builder.toString();
+        return left.walkRight();
     }
 }

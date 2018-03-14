@@ -1,7 +1,8 @@
-package com.sothatsit.cits2200.data;
+package com.sothatsit.cits2200.data.queue;
 
 import CITS2200.Queue;
 import CITS2200.Underflow;
+import com.sothatsit.cits2200.data.NodeSinglyLinked;
 
 public class QueueLinked implements Queue {
 
@@ -80,5 +81,13 @@ public class QueueLinked implements Queue {
         }
 
         return value;
+    }
+
+    /**
+     * @return a string representation of this queue as an array
+     */
+    @Override
+    public String toString() {
+        return top.walk();
     }
 }

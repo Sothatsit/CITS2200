@@ -112,4 +112,32 @@ public class NodeDoublyLinked {
     public NodeDoublyLinked getLeft() {
         return left;
     }
+
+    /**
+     * Convert this to a string by walking right over this linked list.
+     *
+     * @return an array string representation of the right of this node
+     */
+    public String walkRight() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append('[');
+
+        boolean first = true;
+        NodeDoublyLinked current = this;
+        while(current != null) {
+            if(!first) {
+                builder.append(", ");
+            } else {
+                first = false;
+            }
+
+            builder.append(current.getValue());
+            current = current.getRight();
+        }
+
+        builder.append(']');
+
+        return builder.toString();
+    }
 }

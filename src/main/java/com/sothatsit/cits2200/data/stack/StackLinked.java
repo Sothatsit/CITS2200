@@ -1,22 +1,18 @@
-package com.sothatsit.cits2200.data;
+package com.sothatsit.cits2200.data.stack;
 
-import CITS2200.Overflow;
 import CITS2200.Stack;
 import CITS2200.Underflow;
+import com.sothatsit.cits2200.data.NodeSinglyLinked;
 
-public class StackBlock implements Stack {
+public class StackLinked implements Stack {
 
-    private final Object[] stack;
-    private int top;
+    private NodeSinglyLinked top;
 
     /**
-     * Instantiate a new stack of size {@param size}.
-     *
-     * @param size the maximum number of elements allowed in this stack
+     * Instantiate a new linked stack.
      */
-    public StackBlock(int size) {
-        this.stack = new Object[size];
-        this.top = 0;
+    public StackLinked() {
+        this.top = null;
     }
 
     /**
@@ -26,32 +22,28 @@ public class StackBlock implements Stack {
      */
     @Override
     public boolean isEmpty() {
-        return top == 0;
+        return top == null;
     }
 
     /**
      * Check whether the stack is full.
      *
-     * @return true iff the stack is full, false otherwise
+     * This is always false as linked stacks have no max size.
+     *
+     * @return false
      */
     public boolean isFull() {
-        return top == stack.length;
+        return false;
     }
 
     /**
      * Push a value onto the stack.
      *
      * @param value     the value to be pushed onto the stack
-     * @throws Overflow if the stack is full
      */
     @Override
-    public void push(Object value) throws Overflow {
-        if(isFull())
-            throw new Overflow("Attempted to push value onto full stack");
-
-        stack[top] = value;
-
-        top += 1;
+    public void push(Object value) {
+        top = new NodeSinglyLinked(value, top);
     }
 
     /**
@@ -65,7 +57,7 @@ public class StackBlock implements Stack {
         if(isEmpty())
             throw new Underflow("Attempted to examine empty stack");
 
-        return stack[top - 1];
+        return top.getValue();
     }
 
     /**
@@ -79,11 +71,17 @@ public class StackBlock implements Stack {
         if(isEmpty())
             throw new Underflow("Attempted to pop empty stack");
 
-        top -= 1;
-
-        Object value = stack[top];
-        stack[top] = null;
+        Object value = top.getValue();
+        top = top.getSuccessor();
 
         return value;
+    }
+
+    /**
+     * @return a string representation of this stack as an array
+     */
+    @Override
+    public String toString() {
+        return top.walk();
     }
 }
