@@ -1,13 +1,15 @@
-public class LockInt implements Lock {
+package com.sothatsit.cits2200.other;
 
-    private int combination;
+public class LockString implements Lock {
+
+    private String combination;
 
     /**
-     * Instantiate a new Lock with the combination {@param combination}.
+     * Instantiate a new com.sothatsit.cits2200.other.Lock with the combination {@param combination}.
      *
      * @param combination the combination of the lock
      */
-    public LockInt(int combination) {
+    public LockString(String combination) {
         this.combination = combination;
     }
 
@@ -20,7 +22,9 @@ public class LockInt implements Lock {
      */
     @Override
     public boolean open(int combination) {
-        return combination == this.combination;
+        String asString = Integer.toString(combination);
+
+        return this.combination.equals(asString);
     }
 
     /**
@@ -37,7 +41,7 @@ public class LockInt implements Lock {
         if(!open(currentCombo))
             return false;
 
-        this.combination = newCombo;
+        this.combination = Integer.toString(newCombo);
         return true;
     }
 }

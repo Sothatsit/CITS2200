@@ -1,3 +1,5 @@
+package com.sothatsit.cits2200.data;
+
 import CITS2200.Deque;
 import CITS2200.Overflow;
 import CITS2200.Underflow;

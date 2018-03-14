@@ -1,3 +1,7 @@
+package com.sothatsit.cits2200.data;
+
+import com.sothatsit.cits2200.test.Checks;
+
 /**
  * A node in a linked data structure that stores a reference to its successor.
  */

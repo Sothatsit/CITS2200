@@ -1,3 +1,5 @@
+package com.sothatsit.cits2200.test;
+
 import java.util.Objects;
 
 public class Checks {

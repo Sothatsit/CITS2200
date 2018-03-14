@@ -1,3 +1,7 @@
+package com.sothatsit.cits2200.other;
+
+import static com.sothatsit.cits2200.test.Checks.*;
+
 public class LockTest {
 
     private static final int INITAL_LOCK_COMBO = 111;
@@ -25,15 +29,15 @@ public class LockTest {
     }
 
     public static void testLock(Lock lock) {
-        Checks.assertTrue(lock.open(INITAL_LOCK_COMBO));
-        Checks.assertTrue(!lock.open(123));
+        assertTrue(lock.open(INITAL_LOCK_COMBO));
+        assertTrue(!lock.open(123));
 
-        Checks.assertTrue(lock.changeCombo(INITAL_LOCK_COMBO, 123));
-        Checks.assertTrue(!lock.open(INITAL_LOCK_COMBO));
-        Checks.assertTrue(lock.open(123));
+        assertTrue(lock.changeCombo(INITAL_LOCK_COMBO, 123));
+        assertTrue(!lock.open(INITAL_LOCK_COMBO));
+        assertTrue(lock.open(123));
 
-        Checks.assertTrue(lock.changeCombo(123, 999));
-        Checks.assertTrue(lock.open(999));
-        Checks.assertTrue(!lock.open(456));
+        assertTrue(lock.changeCombo(123, 999));
+        assertTrue(lock.open(999));
+        assertTrue(!lock.open(456));
     }
 }

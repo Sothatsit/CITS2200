@@ -1,3 +1,5 @@
+package com.sothatsit.cits2200.other;
+
 public interface Lock {
 
     /**

@@ -1,3 +1,5 @@
+package com.sothatsit.cits2200.algorithm;
+
 import java.util.Arrays;
 import java.util.Random;
 

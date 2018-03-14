@@ -1,3 +1,5 @@
+package com.sothatsit.cits2200.algorithm;
+
 import CITS2200.Sort;
 
 public class Sorter implements Sort {

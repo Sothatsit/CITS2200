@@ -1,3 +1,7 @@
+package com.sothatsit.cits2200.data;
+
+import com.sothatsit.cits2200.test.Checks;
+
 /**
  * A node in a linked data structure that stores references to a left and a right node.
  */
