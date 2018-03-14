@@ -1,11 +1,11 @@
 /**
- * A node in a linked data structure that stores references to its previous and next nodes.
+ * A node in a linked data structure that stores references to a left and a right node.
  */
 public class NodeDoublyLinked {
 
     private final Object value;
-    private NodeDoublyLinked previous;
-    private NodeDoublyLinked next;
+    private NodeDoublyLinked left;
+    private NodeDoublyLinked right;
 
     /**
      * Instantiate a new doubly linked node with the value {@param value} that is not connected to any other nodes.
@@ -17,18 +17,19 @@ public class NodeDoublyLinked {
     }
 
     /**
-     * Instantiate a new doubly linked node with the value {@param value} linked to the successor {@param successor}.
+     * Instantiate a new doubly linked node with the value {@param value}
+     * linked on the left to {@param left} and on the right to {@param right}.
      *
-     * @param value    the value of this link
-     * @param previous the previous node this node is linked to, nullable
-     * @param next     the next node this node is linked to, nullable
+     * @param value the value of this link
+     * @param left  the left node this node is linked to, nullable
+     * @param right the right node this node is linked to, nullable
      */
-    public NodeDoublyLinked(Object value, NodeDoublyLinked previous, NodeDoublyLinked next) {
+    public NodeDoublyLinked(Object value, NodeDoublyLinked left, NodeDoublyLinked right) {
         Checks.assertNonNull(value, "value");
 
         this.value = value;
-        this.previous = previous;
-        this.next = next;
+        this.left = left;
+        this.right = right;
     }
 
     /**
@@ -39,52 +40,72 @@ public class NodeDoublyLinked {
     }
 
     /**
-     * @return true iff this node has a previous node, false otherwise
+     * @return true iff this node has a left node, false otherwise
      */
-    public boolean hasPrevious() {
-        return previous != null;
+    public boolean hasLeft() {
+        return left != null;
     }
 
     /**
-     * @return true iff this node has a next node, false otherwise
+     * @return true iff this node has a right node, false otherwise
      */
-    public boolean hasNext() {
-        return next != null;
+    public boolean hasRight() {
+        return right != null;
     }
 
     /**
-     * Set the next node of this node to {@param next}.
-     * Or if {@param next} is null, remove the link to the next node.
+     * Set the right node of this node to {@param right}.
+     * Or if {@param right} is null, remove the link to the right node.
      *
-     * @param next the node to link this node next to, or null to remove the link
-     */
-    public void linkTo(NodeDoublyLinked next) {
-        this.next = next;
-        this.next.previous = this;
-    }
-
-    /**
-     * Set the previous node of this node to {@param previous}.
-     * Or if {@param previous} is null, remove the link to the previous node.
+     * Will also update the left reference of {@param right} to this
+     * node, and will clear the left reference of {@link this#right}.
      *
-     * @param previous the node this node is linked from
+     * @param right the node to be linked to the right, or null to remove the link
      */
-    public void linkFrom(NodeDoublyLinked previous) {
-        this.previous = previous;
-        this.previous.next = this;
+    public void linkRight(NodeDoublyLinked right) {
+        if(this.right != null) {
+            this.right.left = null;
+        }
+
+        this.right = right;
+
+        if(this.right != null) {
+            this.right.left = this;
+        }
     }
 
     /**
-     * @return the node this node is linked to
+     * Set the left node of this node to {@param left}.
+     * Or if {@param left} is null, remove the link to the left node.
+     *
+     * Will also update the right reference of {@param left} to this
+     * node, and will clear the right reference of {@link this#left}.
+     *
+     * @param left the node to be linked to the left, or null to remove the link
      */
-    public NodeDoublyLinked getNext() {
-        return next;
+    public void linkLeft(NodeDoublyLinked left) {
+        if(this.left != null) {
+            this.left.right = null;
+        }
+
+        this.left = left;
+
+        if(this.left != null) {
+            this.left.right = this;
+        }
     }
 
     /**
-     * @return the node this node is linked from
+     * @return the node this node is linked to on the left
      */
-    public NodeDoublyLinked getPrevious() {
-        return previous;
+    public NodeDoublyLinked getRight() {
+        return right;
+    }
+
+    /**
+     * @return the node this node is linked to on the right
+     */
+    public NodeDoublyLinked getLeft() {
+        return left;
     }
 }

@@ -22,7 +22,7 @@ public class DequeTest {
         Checks.assertEquals(deque.peekLeft(), 1);
         Checks.assertEquals(deque.peekRight(), 1);
 
-        deque.popRight();
+        Checks.assertEquals(deque.popRight(), 1);
 
         Checks.assertTrue(deque.isEmpty());
 
@@ -46,23 +46,23 @@ public class DequeTest {
         Checks.assertThrows(() -> deque.pushLeft(8), Overflow.class);
         Checks.assertThrows(() -> deque.pushRight(9), Overflow.class);
 
-        deque.popLeft();
+        Checks.assertEquals(deque.popLeft(), 5);
 
         Checks.assertTrue(!deque.isEmpty());
         Checks.assertTrue(!deque.isFull());
         Checks.assertEquals(deque.peekLeft(), 3);
         Checks.assertEquals(deque.peekRight(), 6);
 
-        deque.popRight();
+        Checks.assertEquals(deque.popRight(), 6);
 
         Checks.assertTrue(!deque.isEmpty());
         Checks.assertTrue(!deque.isFull());
         Checks.assertEquals(deque.peekLeft(), 3);
         Checks.assertEquals(deque.peekRight(), 4);
 
-        deque.popRight();
-        deque.popRight();
-        deque.popRight();
+        Checks.assertEquals(deque.popRight(), 4);
+        Checks.assertEquals(deque.popRight(), 2);
+        Checks.assertEquals(deque.popRight(), 3);
 
         Checks.assertTrue(deque.isEmpty());
         Checks.assertThrows(deque::popLeft, Underflow.class);
@@ -100,7 +100,7 @@ public class DequeTest {
         Checks.assertEquals(deque.peekLeft(), 1);
         Checks.assertEquals(deque.peekRight(), 1);
 
-        deque.popRight();
+        Checks.assertEquals(deque.popRight(), 1);
 
         Checks.assertTrue(deque.isEmpty());
 
@@ -121,23 +121,23 @@ public class DequeTest {
         Checks.assertEquals(deque.peekLeft(), 5);
         Checks.assertEquals(deque.peekRight(), 6);
 
-        deque.popLeft();
+        Checks.assertEquals(deque.popLeft(), 5);
 
         Checks.assertTrue(!deque.isEmpty());
         Checks.assertTrue(!deque.isFull());
         Checks.assertEquals(deque.peekLeft(), 3);
         Checks.assertEquals(deque.peekRight(), 6);
 
-        deque.popRight();
+        Checks.assertEquals(deque.popRight(), 6);
 
         Checks.assertTrue(!deque.isEmpty());
         Checks.assertTrue(!deque.isFull());
         Checks.assertEquals(deque.peekLeft(), 3);
         Checks.assertEquals(deque.peekRight(), 4);
 
-        deque.popRight();
-        deque.popRight();
-        deque.popRight();
+        Checks.assertEquals(deque.popRight(), 4);
+        Checks.assertEquals(deque.popRight(), 2);
+        Checks.assertEquals(deque.popRight(), 3);
 
         Checks.assertTrue(deque.isEmpty());
         Checks.assertThrows(deque::popLeft, Underflow.class);

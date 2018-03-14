@@ -3,36 +3,23 @@ import CITS2200.Underflow;
 
 public class DequeLinked implements Deque {
 
-    private DequeLinked child;
-    private Object value;
+    private NodeDoublyLinked left;
+    private NodeDoublyLinked right;
 
     /**
      * Instantiate a new deque.
      */
     public DequeLinked() {
-        this.child = null;
-        this.value = null;
+        this.left = null;
+        this.right = null;
     }
 
     /**
-     * Insantiate a new deque node with value {@param value} and child {@param child}.
-     * 
-     * @param child the child of this node in the linked deque
-     * @param value the value of this node in the linked deque
-     */
-    private DequeLinked(DequeLinked child, Object value) {
-        this.child = child;
-        this.value = value;
-    }
-
-    /**
-     * Check whether this deque is empty.
-     *
      * @return true iff the deque is empty, false otherwise.
      */
     @Override
     public boolean isEmpty() {
-        return value == null;
+        return left == null;
     }
 
     /**
@@ -50,34 +37,46 @@ public class DequeLinked implements Deque {
     /**
      * Push a value onto the left of this deque.
      *
-     * @param value     the value to be pushed onto the deque
+     * @param value the value to be pushed onto the deque
      */
     @Override
     public void pushLeft(Object value) {
-        this.child = new DequeLinked(this.child, this.value);
-        this.value = value;
+        // Special case for empty deque
+        if(isEmpty()) {
+            left = new NodeDoublyLinked(value);
+            right = left;
+            return;
+        }
+
+        NodeDoublyLinked node = new NodeDoublyLinked(value);
+        left.linkLeft(node);
+        left = node;
     }
 
     /**
      * Push a value onto the right of this deque.
      *
-     * @param value     the value to be pushed onto the deque
+     * @param value the value to be pushed onto the deque
      */
     @Override
     public void pushRight(Object value) {
-        if(!isEmpty()) {
-            child.pushRight(value);
+        // Special case for empty deque
+        if(isEmpty()) {
+            right = new NodeDoublyLinked(value);
+            left = right;
             return;
         }
 
-        this.child = new DequeLinked();
-        this.value = value;
+        NodeDoublyLinked node = new NodeDoublyLinked(value);
+        right.linkRight(node);
+        right = node;
     }
 
     /**
      * Pop a value from the left of this deque.
      *
-     * @return           the value that was pop'ed off of the deque
+     * @return the value that was popped from the left of the deque
+     *
      * @throws Underflow if the deque is empty
      */
     @Override
@@ -85,18 +84,26 @@ public class DequeLinked implements Deque {
         if(isEmpty())
             throw new Underflow("Attempted to pop value from an empty deque");
 
-        Object popped = this.value;
+        Object value = left.getValue();
+        left = left.getRight();
 
-        this.value = child.value;
-        this.child = child.child;
+        if(left != null) {
+            left.linkLeft(null);
+        }
 
-        return popped;
+        // Special case when emptying the deque
+        if(left == null) {
+            right = null;
+        }
+
+        return value;
     }
 
     /**
      * Pop a value from the right of this deque.
      *
-     * @return           the value that was pop'ed off of the deque
+     * @return the value that was popped from the right of the deque
+     *
      * @throws Underflow if the deque is empty
      */
     @Override
@@ -104,21 +111,26 @@ public class DequeLinked implements Deque {
         if(isEmpty())
             throw new Underflow("Attempted to pop value from an empty deque");
 
-        if(!child.isEmpty())
-            return child.popRight();
+        Object value = right.getValue();
+        right = right.getLeft();
 
-        Object popped = this.value;
+        if(right != null) {
+            right.linkRight(null);
+        }
 
-        this.value = null;
-        this.child = null;
+        // Special case when emptying the deque
+        if(right == null) {
+            left = null;
+        }
 
-        return popped;
+        return value;
     }
 
     /**
-     * Peek the right-most value in this deque.
+     * Peek at the right-most value in this deque.
      *
-     * @return           the right-most value of this deque
+     * @return the right-most value of this deque
+     *
      * @throws Underflow if the deque is empty
      */
     @Override
@@ -126,16 +138,14 @@ public class DequeLinked implements Deque {
         if(isEmpty())
             throw new Underflow("Attempted to peek value from an empty deque");
 
-        if(!child.isEmpty())
-            return child.peekRight();
-
-        return value;
+        return right.getValue();
     }
 
     /**
      * Peek the left-most value in this deque.
      *
-     * @return           the left-most value of this deque
+     * @return the left-most value of this deque
+     *
      * @throws Underflow if the deque is empty
      */
     @Override
@@ -143,6 +153,33 @@ public class DequeLinked implements Deque {
         if(isEmpty())
             throw new Underflow("Attempted to peek value from an empty deque");
 
-        return value;
+        return left.getValue();
+    }
+
+    /**
+     * @return a stringified representation of this deque as an array
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append('[');
+
+        boolean first = true;
+        NodeDoublyLinked current = left;
+        while(current != null) {
+            if(!first) {
+                builder.append(", ");
+            } else {
+                first = false;
+            }
+
+            builder.append(current.getValue());
+            current = current.getRight();
+        }
+
+        builder.append(']');
+
+        return builder.toString();
     }
 }
