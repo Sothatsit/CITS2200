@@ -1,6 +1,7 @@
 package com.sothatsit.cits2200.data;
 
-import com.sothatsit.cits2200.test.Checks;
+import com.sothatsit.cits2200.util.ArrayBuilder;
+import com.sothatsit.cits2200.util.Checks;
 
 /**
  * A node in a linked data structure that stores a reference to its successor.
@@ -69,24 +70,13 @@ public class NodeSinglyLinked {
      * @return an array string representation of the successors of this node
      */
     public String walk() {
-        StringBuilder builder = new StringBuilder();
+        ArrayBuilder builder = new ArrayBuilder();
 
-        builder.append('[');
-
-        boolean first = true;
         NodeSinglyLinked current = this;
         while(current != null) {
-            if(!first) {
-                builder.append(", ");
-            } else {
-                first = false;
-            }
-
             builder.append(current.getValue());
             current = current.getSuccessor();
         }
-
-        builder.append(']');
 
         return builder.toString();
     }

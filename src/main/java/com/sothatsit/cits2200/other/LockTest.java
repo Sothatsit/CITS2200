@@ -1,6 +1,6 @@
 package com.sothatsit.cits2200.other;
 
-import static com.sothatsit.cits2200.test.Checks.*;
+import static com.sothatsit.cits2200.util.Checks.*;
 
 public class LockTest {
 

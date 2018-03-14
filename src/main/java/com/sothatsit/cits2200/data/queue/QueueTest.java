@@ -1,7 +1,7 @@
 package com.sothatsit.cits2200.data.queue;
 
 import CITS2200.Underflow;
-import static com.sothatsit.cits2200.test.Checks.*;
+import static com.sothatsit.cits2200.util.Checks.*;
 
 public class QueueTest {
 

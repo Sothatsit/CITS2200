@@ -2,7 +2,7 @@ package com.sothatsit.cits2200.data.stack;
 
 import CITS2200.Overflow;
 import CITS2200.Underflow;
-import static com.sothatsit.cits2200.test.Checks.*;
+import static com.sothatsit.cits2200.util.Checks.*;
 
 public class StackTest {
 

@@ -1,6 +1,7 @@
 package com.sothatsit.cits2200.data;
 
-import com.sothatsit.cits2200.test.Checks;
+import com.sothatsit.cits2200.util.ArrayBuilder;
+import com.sothatsit.cits2200.util.Checks;
 
 /**
  * A node in a linked data structure that stores references to a left and a right node.
@@ -119,24 +120,13 @@ public class NodeDoublyLinked {
      * @return an array string representation of the right of this node
      */
     public String walkRight() {
-        StringBuilder builder = new StringBuilder();
+        ArrayBuilder builder = new ArrayBuilder();
 
-        builder.append('[');
-
-        boolean first = true;
         NodeDoublyLinked current = this;
         while(current != null) {
-            if(!first) {
-                builder.append(", ");
-            } else {
-                first = false;
-            }
-
             builder.append(current.getValue());
             current = current.getRight();
         }
-
-        builder.append(']');
 
         return builder.toString();
     }

@@ -1,4 +1,4 @@
-package com.sothatsit.cits2200.test;
+package com.sothatsit.cits2200.util;
 
 import java.util.Objects;
 

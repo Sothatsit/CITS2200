@@ -1,6 +1,6 @@
 package com.sothatsit.cits2200.data.deque;
 
-import static com.sothatsit.cits2200.test.Checks.*;
+import static com.sothatsit.cits2200.util.Checks.*;
 
 import CITS2200.Overflow;
 import CITS2200.Underflow;
