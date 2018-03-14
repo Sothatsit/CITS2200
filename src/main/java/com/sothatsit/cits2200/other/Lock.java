@@ -1,5 +1,10 @@
 package com.sothatsit.cits2200.other;
 
+/**
+ * A combination lock that accepts combinations between 0 and 999.
+ *
+ * @author Paddy Lamont
+ */
 public interface Lock {
 
     /**

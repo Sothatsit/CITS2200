@@ -1,11 +1,16 @@
 package com.sothatsit.cits2200.other;
 
+/**
+ * An implementation of a Lock backed by an int combination.
+ *
+ * @author Paddy Lamont
+ */
 public class LockInt implements Lock {
 
     private int combination;
 
     /**
-     * Instantiate a new com.sothatsit.cits2200.other.Lock with the combination {@param combination}.
+     * Instantiate a new Lock with the combination {@param combination}.
      *
      * @param combination the combination of the lock
      */

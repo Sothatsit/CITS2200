@@ -4,6 +4,11 @@ import CITS2200.Queue;
 import CITS2200.Underflow;
 import com.sothatsit.cits2200.data.NodeSinglyLinked;
 
+/**
+ * A linked, no capacity, first in first out implementation of a queue.
+ *
+ * @author Paddy Lamont
+ */
 public class QueueLinked implements Queue {
 
     private NodeSinglyLinked top;

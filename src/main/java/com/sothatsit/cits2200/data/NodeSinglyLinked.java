@@ -5,6 +5,8 @@ import com.sothatsit.cits2200.util.Checks;
 
 /**
  * A node in a linked data structure that stores a reference to its successor.
+ *
+ * @author Paddy Lamont
  */
 public class NodeSinglyLinked {
 

@@ -4,6 +4,11 @@ import CITS2200.Deque;
 import CITS2200.Overflow;
 import CITS2200.Underflow;
 
+/**
+ * A cyclic, fixed capacity implementation of a double ended queue.
+ *
+ * @author Paddy Lamont
+ */
 public class DequeCyclic implements Deque {
 
     private final Object[] deque;

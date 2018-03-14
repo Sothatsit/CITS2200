@@ -2,6 +2,11 @@ package com.sothatsit.cits2200.algorithm;
 
 import CITS2200.Sort;
 
+/**
+ * Allow using an insertion sort, quick sort or merge sort to sort an array of longs.
+ *
+ * @author Paddy Lamont
+ */
 public class Sorter implements Sort {
 
     private int assignmentCount;

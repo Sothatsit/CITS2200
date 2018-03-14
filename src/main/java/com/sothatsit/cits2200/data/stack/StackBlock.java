@@ -4,6 +4,11 @@ import CITS2200.Overflow;
 import CITS2200.Stack;
 import CITS2200.Underflow;
 
+/**
+ * A fixed capacity, first in last out implementation of a stack.
+ *
+ * @author Paddy Lamont
+ */
 public class StackBlock implements Stack {
 
     private final Object[] stack;

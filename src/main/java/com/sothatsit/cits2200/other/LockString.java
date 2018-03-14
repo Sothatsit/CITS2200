@@ -1,5 +1,10 @@
 package com.sothatsit.cits2200.other;
 
+/**
+ * An implementation of a Lock backed by a String combination.
+ *
+ * @author Paddy Lamont
+ */
 public class LockString implements Lock {
 
     private String combination;

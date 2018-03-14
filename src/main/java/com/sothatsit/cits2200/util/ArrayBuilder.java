@@ -2,6 +2,8 @@ package com.sothatsit.cits2200.util;
 
 /**
  * A builder used to construct array strings.
+ *
+ * @author Paddy Lamont
  */
 public class ArrayBuilder {
 

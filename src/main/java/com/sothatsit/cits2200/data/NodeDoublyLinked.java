@@ -5,6 +5,8 @@ import com.sothatsit.cits2200.util.Checks;
 
 /**
  * A node in a linked data structure that stores references to a left and a right node.
+ *
+ * @author Paddy Lamont
  */
 public class NodeDoublyLinked {
 

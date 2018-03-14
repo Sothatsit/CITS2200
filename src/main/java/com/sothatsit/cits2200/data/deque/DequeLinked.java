@@ -4,6 +4,11 @@ import CITS2200.Deque;
 import CITS2200.Underflow;
 import com.sothatsit.cits2200.data.NodeDoublyLinked;
 
+/**
+ * A linked, no capacity implementation of a double ended queue.
+ *
+ * @author Paddy Lamont
+ */
 public class DequeLinked implements Deque {
 
     private NodeDoublyLinked left;
