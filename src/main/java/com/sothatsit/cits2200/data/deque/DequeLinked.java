@@ -165,7 +165,7 @@ public class DequeLinked implements Deque {
     }
 
     /**
-     * @return a string representation of this deque as an array
+     * @return a string representation of this deque as an array, left-most first in array
      */
     @Override
     public String toString() {

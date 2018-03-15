@@ -89,7 +89,7 @@ public class QueueLinked implements Queue {
     }
 
     /**
-     * @return a string representation of this queue as an array
+     * @return a string representation of this queue as an array, first in first in array
      */
     @Override
     public String toString() {

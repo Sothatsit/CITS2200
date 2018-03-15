@@ -4,6 +4,7 @@ import CITS2200.Overflow;
 import CITS2200.Queue;
 import CITS2200.Underflow;
 import com.sothatsit.cits2200.data.NodeSinglyLinked;
+import com.sothatsit.cits2200.util.ArrayBuilder;
 
 /**
  * A cylic, fixed capacity, first in first out implementation of a queue.
@@ -100,5 +101,13 @@ public class QueueCyclic implements Queue {
      */
     private int mapIndex(int index) {
         return (index % queue.length) + (index < 0 ? queue.length : 0);
+    }
+
+    /**
+     * @return a string representation of this queue as an array, first in first in array
+     */
+    @Override
+    public String toString() {
+        return ArrayBuilder.fromCyclicArray(queue, first, length);
     }
 }

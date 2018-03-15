@@ -3,6 +3,7 @@ package com.sothatsit.cits2200.data.deque;
 import CITS2200.Deque;
 import CITS2200.Overflow;
 import CITS2200.Underflow;
+import com.sothatsit.cits2200.util.ArrayBuilder;
 
 /**
  * A cyclic, fixed capacity implementation of a double ended queue.
@@ -165,5 +166,13 @@ public class DequeCyclic implements Deque {
      */
     private int mapIndex(int index) {
         return (index % deque.length) + (index < 0 ? deque.length : 0);
+    }
+
+    /**
+     * @return a string representation of this deque as an array, left-most first in array
+     */
+    @Override
+    public String toString() {
+        return ArrayBuilder.fromCyclicArray(deque, left, length);
     }
 }
