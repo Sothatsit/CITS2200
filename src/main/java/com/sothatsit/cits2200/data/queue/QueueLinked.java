@@ -31,7 +31,7 @@ public class QueueLinked implements Queue {
     }
 
     /**
-     * Enqueue {@param value} to the end of this linked queue.
+     * Enqueue {@param value} to the end of this queue.
      *
      * @param value the value to append to the end of this queue
      */
