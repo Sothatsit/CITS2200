@@ -1,8 +1,9 @@
 package com.sothatsit.cits2200.data.stack;
 
+import CITS2200.Link;
 import CITS2200.Stack;
 import CITS2200.Underflow;
-import com.sothatsit.cits2200.data.NodeSinglyLinked;
+import com.sothatsit.cits2200.util.ArrayBuilder;
 
 /**
  * A no capacity, first in last out implementation of a stack.
@@ -11,7 +12,7 @@ import com.sothatsit.cits2200.data.NodeSinglyLinked;
  */
 public class StackLinked implements Stack {
 
-    private NodeSinglyLinked top;
+    private Link top;
 
     /**
      * Instantiate a new linked stack.
@@ -44,17 +45,18 @@ public class StackLinked implements Stack {
     /**
      * Push a value onto the stack.
      *
-     * @param value     the value to be pushed onto the stack
+     * @param value the value to be pushed onto the stack
      */
     @Override
     public void push(Object value) {
-        top = new NodeSinglyLinked(value, top);
+        top = new Link(value, top);
     }
 
     /**
      * Get the top element on the stack without modifying the stack.
      *
-     * @return           the top element of the stack
+     * @return the top element of the stack
+     *
      * @throws Underflow if the stack is empty
      */
     @Override
@@ -62,13 +64,14 @@ public class StackLinked implements Stack {
         if(isEmpty())
             throw new Underflow("Attempted to examine empty stack");
 
-        return top.getValue();
+        return top.item;
     }
 
     /**
      * Pop the top element off of the stack, and return it.
      *
-     * @return           the element pop'ed off of the stack
+     * @return the element pop'ed off of the stack
+     *
      * @throws Underflow if the stack is empty
      */
     @Override
@@ -76,17 +79,17 @@ public class StackLinked implements Stack {
         if(isEmpty())
             throw new Underflow("Attempted to pop empty stack");
 
-        Object value = top.getValue();
-        top = top.getSuccessor();
+        Object value = top.item;
+        top = top.successor;
 
         return value;
     }
 
     /**
-     * @return a string representation of this stack as an array
+     * @return a string representation of this stack as an array, top-most element at index 0
      */
     @Override
     public String toString() {
-        return top.walk();
+        return ArrayBuilder.fromLinked(top);
     }
 }

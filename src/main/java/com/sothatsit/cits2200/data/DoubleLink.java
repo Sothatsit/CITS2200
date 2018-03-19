@@ -8,18 +8,18 @@ import com.sothatsit.cits2200.util.Checks;
  *
  * @author Paddy Lamont
  */
-public class NodeDoublyLinked {
+public class DoubleLink {
 
     private final Object value;
-    private NodeDoublyLinked left;
-    private NodeDoublyLinked right;
+    private DoubleLink left;
+    private DoubleLink right;
 
     /**
      * Instantiate a new doubly linked node with the value {@param value} that is not connected to any other nodes.
      *
      * @param value the value of this link
      */
-    public NodeDoublyLinked(Object value) {
+    public DoubleLink(Object value) {
         this(value, null, null);
     }
 
@@ -31,7 +31,7 @@ public class NodeDoublyLinked {
      * @param left  the left node this node is linked to, nullable
      * @param right the right node this node is linked to, nullable
      */
-    public NodeDoublyLinked(Object value, NodeDoublyLinked left, NodeDoublyLinked right) {
+    public DoubleLink(Object value, DoubleLink left, DoubleLink right) {
         Checks.assertNonNull(value, "value");
 
         this.value = value;
@@ -69,7 +69,7 @@ public class NodeDoublyLinked {
      *
      * @param right the node to be linked to the right, or null to remove the link
      */
-    public void linkRight(NodeDoublyLinked right) {
+    public void linkRight(DoubleLink right) {
         if(this.right != null) {
             this.right.left = null;
         }
@@ -90,7 +90,7 @@ public class NodeDoublyLinked {
      *
      * @param left the node to be linked to the left, or null to remove the link
      */
-    public void linkLeft(NodeDoublyLinked left) {
+    public void linkLeft(DoubleLink left) {
         if(this.left != null) {
             this.left.right = null;
         }
@@ -105,14 +105,14 @@ public class NodeDoublyLinked {
     /**
      * @return the node this node is linked to on the left
      */
-    public NodeDoublyLinked getRight() {
+    public DoubleLink getRight() {
         return right;
     }
 
     /**
      * @return the node this node is linked to on the right
      */
-    public NodeDoublyLinked getLeft() {
+    public DoubleLink getLeft() {
         return left;
     }
 
@@ -124,7 +124,7 @@ public class NodeDoublyLinked {
     public String walkRight() {
         ArrayBuilder builder = new ArrayBuilder();
 
-        NodeDoublyLinked current = this;
+        DoubleLink current = this;
         while(current != null) {
             builder.append(current.getValue());
             current = current.getRight();

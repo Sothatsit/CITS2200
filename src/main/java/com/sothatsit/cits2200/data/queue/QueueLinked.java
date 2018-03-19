@@ -1,8 +1,9 @@
 package com.sothatsit.cits2200.data.queue;
 
+import CITS2200.Link;
 import CITS2200.Queue;
 import CITS2200.Underflow;
-import com.sothatsit.cits2200.data.NodeSinglyLinked;
+import com.sothatsit.cits2200.util.ArrayBuilder;
 
 /**
  * A linked, no capacity, first in first out implementation of a queue.
@@ -11,8 +12,8 @@ import com.sothatsit.cits2200.data.NodeSinglyLinked;
  */
 public class QueueLinked implements Queue {
 
-    private NodeSinglyLinked top;
-    private NodeSinglyLinked bottom;
+    private Link top;
+    private Link bottom;
 
     /**
      * Instantiate a new linked queue.
@@ -39,15 +40,13 @@ public class QueueLinked implements Queue {
     public void enqueue(Object value) {
         // Special case for empty queue
         if(isEmpty()) {
-            top = new NodeSinglyLinked(value, null);
+            top = new Link(value, null);
             bottom = top;
             return;
         }
 
-        NodeSinglyLinked node = new NodeSinglyLinked(value, null);
-
-        bottom.setSuccessor(node);
-        bottom = node;
+        bottom.successor = new Link(value, null);
+        bottom = bottom.successor;
     }
 
     /**
@@ -62,7 +61,7 @@ public class QueueLinked implements Queue {
         if(isEmpty())
             throw new Underflow("Attempting to examine an empty queue");
 
-        return top.getValue();
+        return top.item;
     }
 
     /**
@@ -77,8 +76,8 @@ public class QueueLinked implements Queue {
         if(isEmpty())
             throw new Underflow("Attempting to examine an empty queue");
 
-        Object value = top.getValue();
-        top = top.getSuccessor();
+        Object value = top.item;
+        top = top.successor;
 
         // Special case for emptying queue
         if(top == null) {
@@ -93,6 +92,6 @@ public class QueueLinked implements Queue {
      */
     @Override
     public String toString() {
-        return top.walk();
+        return ArrayBuilder.fromLinked(top);
     }
 }

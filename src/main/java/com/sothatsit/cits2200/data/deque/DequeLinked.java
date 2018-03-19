@@ -2,7 +2,7 @@ package com.sothatsit.cits2200.data.deque;
 
 import CITS2200.Deque;
 import CITS2200.Underflow;
-import com.sothatsit.cits2200.data.NodeDoublyLinked;
+import com.sothatsit.cits2200.data.DoubleLink;
 
 /**
  * A linked, no capacity implementation of a double ended queue.
@@ -11,8 +11,8 @@ import com.sothatsit.cits2200.data.NodeDoublyLinked;
  */
 public class DequeLinked implements Deque {
 
-    private NodeDoublyLinked left;
-    private NodeDoublyLinked right;
+    private DoubleLink left;
+    private DoubleLink right;
 
     /**
      * Instantiate a new deque.
@@ -51,12 +51,12 @@ public class DequeLinked implements Deque {
     public void pushLeft(Object value) {
         // Special case for empty deque
         if(isEmpty()) {
-            left = new NodeDoublyLinked(value);
+            left = new DoubleLink(value);
             right = left;
             return;
         }
 
-        NodeDoublyLinked node = new NodeDoublyLinked(value);
+        DoubleLink node = new DoubleLink(value);
         left.linkLeft(node);
         left = node;
     }
@@ -70,12 +70,12 @@ public class DequeLinked implements Deque {
     public void pushRight(Object value) {
         // Special case for empty deque
         if(isEmpty()) {
-            right = new NodeDoublyLinked(value);
+            right = new DoubleLink(value);
             left = right;
             return;
         }
 
-        NodeDoublyLinked node = new NodeDoublyLinked(value);
+        DoubleLink node = new DoubleLink(value);
         right.linkRight(node);
         right = node;
     }
