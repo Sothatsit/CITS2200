@@ -4,6 +4,7 @@ import CITS2200.Link;
 import CITS2200.List;
 import CITS2200.OutOfBounds;
 import CITS2200.WindowLinked;
+import com.sothatsit.cits2200.util.ArrayBuilder;
 
 /**
  * A linked, no capacity implementation of a list.
@@ -208,5 +209,13 @@ public class ListLinked implements List {
         window.link.successor = window.link.successor.successor;
 
         return previousValue;
+    }
+
+    /**
+     * @return a string representation of this list, left-most element at index 0
+     */
+    @Override
+    public String toString() {
+        return ArrayBuilder.fromLinkedWithTerminator(before.successor);
     }
 }

@@ -1,9 +1,6 @@
-package com.sothatsit.cits2200.data.stack;
-
 import CITS2200.Overflow;
 import CITS2200.Stack;
 import CITS2200.Underflow;
-import com.sothatsit.cits2200.util.ArrayBuilder;
 
 /**
  * A fixed capacity, first in last out implementation of a stack.
@@ -93,13 +90,5 @@ public class StackBlock implements Stack {
         stack[top] = null;
 
         return value;
-    }
-
-    /**
-     * @return a string representation of this stack, top-most element at index 0
-     */
-    @Override
-    public String toString() {
-        return ArrayBuilder.fromArray(stack, 0, top - 1);
     }
 }

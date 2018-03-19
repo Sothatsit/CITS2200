@@ -3,7 +3,6 @@ package com.sothatsit.cits2200.data.queue;
 import CITS2200.Overflow;
 import CITS2200.Queue;
 import CITS2200.Underflow;
-import com.sothatsit.cits2200.data.NodeSinglyLinked;
 import com.sothatsit.cits2200.util.ArrayBuilder;
 
 /**
