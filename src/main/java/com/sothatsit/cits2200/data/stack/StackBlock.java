@@ -62,7 +62,8 @@ public class StackBlock implements Stack {
     /**
      * Get the top element on the stack without modifying the stack.
      *
-     * @return           the top element of the stack
+     * @return the top element of the stack
+     *
      * @throws Underflow if the stack is empty
      */
     @Override
@@ -76,7 +77,8 @@ public class StackBlock implements Stack {
     /**
      * Pop the top element off of the stack, and return it.
      *
-     * @return           the element pop'ed off of the stack
+     * @return the element pop'ed off of the stack
+     *
      * @throws Underflow if the stack is empty
      */
     @Override
