@@ -158,11 +158,11 @@ public class DequeCyclic implements Deque {
     }
 
     /**
-     * Map from a continuous index space repeating every {@link this#deque#length}
-     * elements to one wrapped into the range [0, {@link this#deque#length}).
+     * Map from a continuous index space repeating every {@link #deque#length}
+     * elements to one wrapped into the range [0, {@link #deque#length}).
      *
      * @param index the index to map
-     * @return      the index mapped into the range [0, {@link this#deque#length})
+     * @return      the index mapped into the range [0, {@link #deque#length})
      */
     private int mapIndex(int index) {
         return (index % deque.length) + (index < 0 ? deque.length : 0);

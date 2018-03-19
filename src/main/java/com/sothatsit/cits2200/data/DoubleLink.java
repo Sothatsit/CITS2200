@@ -4,7 +4,7 @@ import com.sothatsit.cits2200.util.ArrayBuilder;
 import com.sothatsit.cits2200.util.Checks;
 
 /**
- * A node in a linked data structure that stores references to a left and a right node.
+ * A link in a linked data structure that stores references to a left and a right link.
  *
  * @author Paddy Lamont
  */
@@ -15,7 +15,7 @@ public class DoubleLink {
     private DoubleLink right;
 
     /**
-     * Instantiate a new doubly linked node with the value {@param value} that is not connected to any other nodes.
+     * Instantiate a new doubly linked link with the value {@param value} that is not connected to any other links.
      *
      * @param value the value of this link
      */
@@ -24,12 +24,12 @@ public class DoubleLink {
     }
 
     /**
-     * Instantiate a new doubly linked node with the value {@param value}
+     * Instantiate a new doubly linked link with the value {@param value}
      * linked on the left to {@param left} and on the right to {@param right}.
      *
      * @param value the value of this link
-     * @param left  the left node this node is linked to, nullable
-     * @param right the right node this node is linked to, nullable
+     * @param left  the left link this link is to be linked to, nullable
+     * @param right the right link this link is to be linked to, nullable
      */
     public DoubleLink(Object value, DoubleLink left, DoubleLink right) {
         Checks.assertNonNull(value, "value");
@@ -40,34 +40,34 @@ public class DoubleLink {
     }
 
     /**
-     * @return the value of this node
+     * @return the value of this link
      */
     public Object getValue() {
         return value;
     }
 
     /**
-     * @return true iff this node has a left node, false otherwise
+     * @return true iff this link is linked to the left, false otherwise
      */
     public boolean hasLeft() {
         return left != null;
     }
 
     /**
-     * @return true iff this node has a right node, false otherwise
+     * @return true iff this link is linked to the right, false otherwise
      */
     public boolean hasRight() {
         return right != null;
     }
 
     /**
-     * Set the right node of this node to {@param right}.
-     * Or if {@param right} is null, remove the link to the right node.
+     * Set the right link of this link to {@param right}.
+     * Or if {@param right} is null, remove the link to the right.
      *
      * Will also update the left reference of {@param right} to this
-     * node, and will clear the left reference of {@link this#right}.
+     * link, and will clear the left reference of {@link #right}.
      *
-     * @param right the node to be linked to the right, or null to remove the link
+     * @param right the link to be linked to the right, or null to remove the link
      */
     public void linkRight(DoubleLink right) {
         if(this.right != null) {
@@ -82,13 +82,13 @@ public class DoubleLink {
     }
 
     /**
-     * Set the left node of this node to {@param left}.
-     * Or if {@param left} is null, remove the link to the left node.
+     * Set the left link of this link to {@param left}.
+     * Or if {@param left} is null, remove the link to the left.
      *
      * Will also update the right reference of {@param left} to this
-     * node, and will clear the right reference of {@link this#left}.
+     * link, and will clear the right reference of {@link #left}.
      *
-     * @param left the node to be linked to the left, or null to remove the link
+     * @param left the link to be linked to the left, or null to remove the link
      */
     public void linkLeft(DoubleLink left) {
         if(this.left != null) {
@@ -103,14 +103,14 @@ public class DoubleLink {
     }
 
     /**
-     * @return the node this node is linked to on the left
+     * @return the link to the right of this link, or null if there is no link
      */
     public DoubleLink getRight() {
         return right;
     }
 
     /**
-     * @return the node this node is linked to on the right
+     * @return the link to the left of this link, or null if there is no link
      */
     public DoubleLink getLeft() {
         return left;
@@ -119,7 +119,7 @@ public class DoubleLink {
     /**
      * Convert this to a string by walking right over this linked list.
      *
-     * @return an array string representation of the right of this node
+     * @return a string representation of the right of this link as an array with this link at index 0
      */
     public String walkRight() {
         ArrayBuilder builder = new ArrayBuilder();

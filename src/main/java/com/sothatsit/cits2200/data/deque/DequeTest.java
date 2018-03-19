@@ -89,7 +89,7 @@ public class DequeTest {
             }
         }
 
-        System.out.println("com.sothatsit.cits2200.data.deque.DequeCyclic passed");
+        System.out.println("DequeCyclic passed");
     }
 
     public static void testDequeLinked() {
