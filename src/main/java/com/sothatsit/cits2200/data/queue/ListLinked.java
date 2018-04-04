@@ -1,4 +1,4 @@
-package com.sothatsit.cits2200.data.list;
+package com.sothatsit.cits2200.data.queue;
 
 import CITS2200.Link;
 import CITS2200.List;
@@ -201,12 +201,12 @@ public class ListLinked implements List {
     public Object delete(WindowLinked window) throws OutOfBounds {
         Object lastValue = examine(window);
 
+        window.link.item = window.link.successor.item;
+        window.link.successor = window.link.successor.successor;
+
         if(after == window.link.successor) {
             after = window.link;
         }
-
-        window.link.item = window.link.successor.item;
-        window.link.successor = window.link.successor.successor;
 
         return lastValue;
     }
