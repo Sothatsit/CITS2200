@@ -1,8 +1,5 @@
-package com.sothatsit.cits2200.data.graph;
-
 import CITS2200.Graph;
 import CITS2200.Search;
-import com.sothatsit.cits2200.data.queue.QueueLinked;
 
 /**
  * Implementations of various graph search algorithms.
@@ -161,7 +158,7 @@ public class SearchImp implements Search {
 
     /**
      * A recursive implementation of depth-first search to find the start and end times of each vertex.
-     *
+     * 
      * @param edgeMatrix the matrix of edges in the graph
      * @param vertex     the next vertex to be processed in the depth-first search
      */
