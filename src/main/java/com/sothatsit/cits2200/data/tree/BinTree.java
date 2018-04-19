@@ -98,7 +98,7 @@ public class BinTree<E> extends BinaryTree<E> {
      */
     @Override
     public Iterator<E> iterator() {
-        return new BinTreeIterator<E>(this);
+        return new BinTreeIterator<>(this);
     }
 
     /**

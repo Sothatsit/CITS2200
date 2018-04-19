@@ -4,6 +4,7 @@ import com.sothatsit.cits2200.data.deque.DequeTest;
 import com.sothatsit.cits2200.data.list.ListTest;
 import com.sothatsit.cits2200.data.queue.QueueTest;
 import com.sothatsit.cits2200.data.stack.StackTest;
+import com.sothatsit.cits2200.data.tree.BinTreeTest;
 
 public class DataStructuresTest {
 
@@ -18,5 +19,7 @@ public class DataStructuresTest {
 
         StackTest.testStackBlock();
         StackTest.testStackLinked();
+
+        BinTreeTest.testBinTree();
     }
 }

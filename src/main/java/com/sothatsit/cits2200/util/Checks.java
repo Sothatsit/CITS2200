@@ -1,5 +1,6 @@
 package com.sothatsit.cits2200.util;
 
+import java.lang.reflect.Array;
 import java.util.Objects;
 
 /**
@@ -80,7 +81,59 @@ public class Checks {
      * @param value2 the second value
      */
     public static void assertEquals(Object value1, Object value2) {
-        assertTrue(Objects.equals(value1, value2), value1 + " does not equal " + value2);
+        assertEquals("", value1, value2);
+    }
+
+    /**
+     * Assert that {@param value1} is equal to {@param value2}.
+     *
+     * @param prefix a prefix to place before the error message
+     * @param value1 the first value
+     * @param value2 the second value
+     */
+    public static void assertEquals(String prefix, Object value1, Object value2) {
+        if(value1 != null && value2 != null && value1.getClass().isArray() && value2.getClass().isArray()) {
+            assertArraysEqual(prefix, value1, value2);
+            return;
+        }
+
+        assertTrue(Objects.equals(value1, value2), prefix + value1 + " does not equal " + value2);
+    }
+
+
+    /**
+     * Assert that the contents of {@param array1} are equal to the contents of {@param array2}.
+     *
+     * @param array1 the first array
+     * @param array2 the second array
+     */
+    public static void assertArraysEqual(Object array1, Object array2) {
+        assertArraysEqual("", array1, array2);
+    }
+
+    /**
+     * Assert that the contents of {@param array1} are equal to the contents of {@param array2}.
+     *
+     * @param prefix a prefix to place before the error message
+     * @param array1 the first array
+     * @param array2 the second array
+     */
+    public static void assertArraysEqual(String prefix, Object array1, Object array2) {
+        assertTrue(array1.getClass().isArray(), "array1 must be an array");
+        assertTrue(array2.getClass().isArray(), "array2 must be an array");
+
+        int length1 = Array.getLength(array1);
+        int length2 = Array.getLength(array2);
+
+        if(length1 != length2)
+            fail("array1 is not the same length as array2");
+
+        for(int index = 0; index < length1; ++index) {
+            Object value1 = Array.get(array1, index);
+            Object value2 = Array.get(array2, index);
+
+            assertEquals(prefix + "at index " + index + ": ", value1, value2);
+        }
     }
 
     /**
