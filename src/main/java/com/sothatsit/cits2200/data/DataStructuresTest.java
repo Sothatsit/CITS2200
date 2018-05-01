@@ -14,6 +14,7 @@ public class DataStructuresTest {
 
         ListTest.testListLinked();
 
+        QueueTest.testPriorityQueue();
         QueueTest.testQueueCyclic();
         QueueTest.testQueueLinked();
 

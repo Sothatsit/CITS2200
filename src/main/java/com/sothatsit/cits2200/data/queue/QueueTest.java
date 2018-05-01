@@ -7,8 +7,56 @@ import static com.sothatsit.cits2200.util.Checks.*;
 public class QueueTest {
 
     public static void main(String[] args) {
+        testPriorityQueue();
         testQueueCyclic();
         testQueueLinked();
+    }
+
+    public static void testPriorityQueue() {
+        PriorityQueueLinked<String> queue = new PriorityQueueLinked<>();
+
+        assertTrue(queue.isEmpty());
+        assertThrows(queue::examine, Underflow.class);
+        assertThrows(queue::dequeue, Underflow.class);
+
+        queue.enqueue("a", 1);
+
+        assertTrue(!queue.isEmpty());
+        assertEquals(queue.examine(), "a");
+
+        assertEquals(queue.dequeue(), "a");
+        assertTrue(queue.isEmpty());
+        assertThrows(queue::examine, Underflow.class);
+        assertThrows(queue::dequeue, Underflow.class);
+
+        queue.enqueue("a", 1);
+        queue.enqueue("b", 2);
+
+        assertTrue(!queue.isEmpty());
+        assertEquals(queue.examine(), "b");
+
+        assertEquals(queue.dequeue(), "b");
+        assertTrue(!queue.isEmpty());
+        assertEquals(queue.examine(), "a");
+
+        assertEquals(queue.dequeue(), "a");
+        assertTrue(queue.isEmpty());
+        assertThrows(queue::examine, Underflow.class);
+        assertThrows(queue::dequeue, Underflow.class);
+
+        queue.enqueue("a", 1);
+        queue.enqueue("b", 2);
+        queue.enqueue("c", 3);
+        queue.enqueue("d", 2);
+        queue.enqueue("e", 1);
+
+        assertEquals(queue.dequeue(), "c");
+        assertEquals(queue.dequeue(), "b");
+        assertEquals(queue.dequeue(), "d");
+        assertEquals(queue.dequeue(), "a");
+        assertEquals(queue.dequeue(), "e");
+
+        System.out.println("PriorityQueueLinked passed");
     }
 
     public static void testQueueCyclic() {
