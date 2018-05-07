@@ -2,7 +2,6 @@ package com.sothatsit.cits2200.algorithm.graph;
 
 import CITS2200.Graph;
 import CITS2200.Path;
-import com.sothatsit.cits2200.data.queue.PriorityQueueLinked;
 import com.sothatsit.cits2200.data.queue.RandomAccessMinHeap;
 
 /**
@@ -33,25 +32,26 @@ public class PathImp implements Path {
         int[] weights = new int[graph.getNumberOfVertices()];
         int totalWeight = 0;
 
-        // Initialise weights to infinity
-        for(int index = 0; index < graph.getNumberOfVertices(); ++index) {
-            weights[index] = Integer.MAX_VALUE;
+        // A heap to store the next vertices to be processed
+        RandomAccessMinHeap heap = new RandomAccessMinHeap(graph.getNumberOfVertices());
+
+        // Initialise the heap with all the vertices, and all weights to -1
+        for(int vertex = 0; vertex < graph.getNumberOfVertices(); ++vertex) {
+            heap.enqueue(vertex, Integer.MAX_VALUE);
+            weights[vertex] = -1;
         }
 
-        // A queue to store the next vertices to be processed
-        PriorityQueueLinked<Integer> queue = new PriorityQueueLinked<>();
-
         // Relax the 0th node for it to be processed
-        queue.enqueue(0, 0);
+        heap.relax(0, 0);
         weights[0] = 0;
 
         // Loop until the minimum spanning tree is found
-        while(!queue.isEmpty()) {
-            int vertex = queue.dequeue();
+        while(!heap.isEmpty()) {
+            int vertex = heap.dequeue();
 
-            // We have already found a lower weight edge to this vertex
-            if(processed[vertex])
-                continue;
+            // We have hit a vertex that was not reached from vertex 0
+            if(weights[vertex] == -1)
+                return -1;
 
             // Mark that we have added this vertex to the minimum spanning tree
             processed[vertex] = true;
@@ -70,16 +70,10 @@ public class PathImp implements Path {
                 if(weights[toVertex] != -1 && weight > weights[toVertex])
                     continue;
 
-                // Enqueue the vertex to be processed and update the weight
+                // Relax the to vertex's weight
                 weights[toVertex] = weight;
-                queue.enqueue(toVertex, -weight);
+                heap.relax(toVertex, weight);
             }
-        }
-
-        // Check if there are any vertices unreachable from vertex 0
-        for(boolean isProcessed : processed) {
-            if(!isProcessed)
-                return -1;
         }
 
         return totalWeight;

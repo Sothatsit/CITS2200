@@ -5,45 +5,11 @@ import CITS2200.*;
 public class PathTest{
 
     public static void main(String[] args) {
-        fuzz();
-    }
-
-    public static void testFiles() {
         run(new PathImp(), new String[] {
                 "F",
                 "/Users/159503/Desktop/Workspace/CITS2200/src/main/resources/error.txt",
                 "0"
         });
-
-        System.out.println();
-
-        run(new PathImpMine(), new String[] {
-                "F",
-                "/Users/159503/Desktop/Workspace/CITS2200/src/main/resources/error.txt",
-                "0"
-        });
-    }
-
-    public static void fuzz() {
-        PathImp imp1 = new PathImp();
-        PathImpMine imp2 = new PathImpMine();
-
-        int lowest = Integer.MAX_VALUE;
-        Graph lowestGraph = null;
-
-        for(int index = 0; index < 1_000_000; ++index) {
-            Graph graph = Graph.randomWeightedGraph(5, false, 0.5d, 3);
-
-            int res1 = imp1.getMinSpanningTree(graph);
-            int res2 = imp2.getMinSpanningTree(graph);
-
-            if(res1 != res2 && Math.min(res1, res2) < lowest) {
-                lowest = Math.min(res1, res2);
-                lowestGraph = graph;
-            }
-        }
-
-        System.out.println(lowestGraph);
     }
 
 //
