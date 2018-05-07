@@ -1,4 +1,4 @@
-package com.sothatsit.cits2200.data.graph;
+package com.sothatsit.cits2200.algorithm.graph;
 
 import CITS2200.Graph;
 import CITS2200.Search;

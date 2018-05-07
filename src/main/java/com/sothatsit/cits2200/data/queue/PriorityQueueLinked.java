@@ -1,7 +1,6 @@
 package com.sothatsit.cits2200.data.queue;
 
 import CITS2200.*;
-import com.sothatsit.cits2200.util.ArrayBuilder;
 
 /**
  * A linked, first-in, first-out, priority queue implementation.
@@ -194,6 +193,7 @@ public class PriorityQueueLinked<E> implements PriorityQueue<E> {
          * @throws OutOfBounds If there are no values left in this iterator
          */
         @Override
+        @SuppressWarnings("unchecked")
         public E next() throws OutOfBounds {
             return (E) queue.dequeue();
         }
